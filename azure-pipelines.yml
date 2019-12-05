@@ -28,3 +28,10 @@ steps:
  feedsToUse: config 
  nugetConfigPath: NuGet.config # Relative à votre repertoire 
 externalFeedCredentials: <Name of the NuGet service connection>
+steps: 
+- task: DotNetCoreCLI@2 
+displayName: 
+Build inputs: 
+command: build 
+projects: '**/*.csproj' 
+arguments: '--configuration Release' # modifier selon vos besoins
