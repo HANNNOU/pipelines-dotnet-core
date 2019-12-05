@@ -41,3 +41,9 @@ displayName: 'Install dotnetsay'
 inputs: command: custom 
 custom: tool 
 arguments: 'install -g dotnetsay'
+steps: # ... # insérer après tasks building 
+- task: DotNetCoreCLI@2 
+inputs: 
+  command: test 
+  projects: '**/*Tests/*.csproj' 
+arguments: '--configuration $(buildConfiguration)'
