@@ -39,7 +39,7 @@ steps:
    custom: tool 
    arguments: 'install -g dotnetsay'
 - task: DotNetCoreCLI@2
-displayName: 'Install dotnetsay' 
+  displayName: 'Install dotnetsay' 
   inputs: 
    command: test 
    projects: '**/*Tests/*.csproj' 
@@ -59,6 +59,13 @@ VSTest testResultsFiles: '**/*.trx'
     
 - script: dotnet test <test-project> --logger trx --collect "Code coverage" 
 - task: PublishTestResults@2 
-inputs: 
-testRunner: VSTest
- testResultsFiles: '**/*.trx'
+  inputs: 
+   testRunner: VSTest
+   testResultsFiles: '**/*.trx'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '''--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'''
+    
