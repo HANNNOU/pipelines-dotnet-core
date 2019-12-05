@@ -35,3 +35,8 @@ Build inputs:
 command: build 
 projects: '**/*.csproj' 
 arguments: '--configuration Release' # modifier selon vos besoins
+- task: DotNetCoreCLI@2 
+displayName: 'Install dotnetsay' 
+inputs: command: custom 
+custom: tool 
+arguments: 'install -g dotnetsay'
